@@ -2,7 +2,7 @@
   <id>at.niw.EnableColorManagementPlugin</id>
   <name>Enable Color Management</name>
   <version>0.1.0</version>
-  <vendor email="niw@niw.at" url="https://github.com/niw">Yoshimasa Niwa</vendor>
+  <vendor email="niw@niw.at" url="https://github.com/niw/intellij-enable-color-management-plugin">Yoshimasa Niwa</vendor>
 
   <description><![CDATA[
     Enable color management on OS X using ColorSync, which is not working with bundled Java correctly.

@@ -1,0 +1,13 @@
+.DS_Store
+.gradle
+.idea/dictionaries/
+.idea/encodings.xml
+.idea/highlighting.xml
+.idea/inspectionProfiles/
+.idea/scopes/
+.idea/shelf/
+.idea/thriftCompiler.xml
+.idea/workspace.xml
+/build/
+.idea
+*.iml

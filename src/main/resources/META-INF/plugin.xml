@@ -1,0 +1,23 @@
+<idea-plugin version="2">
+  <id>at.niw.EnableColorManagementPlugin</id>
+  <name>Enable Color Management</name>
+  <version>0.1.0</version>
+  <vendor email="niw@niw.at" url="https://github.com/niw">Yoshimasa Niwa</vendor>
+
+  <description><![CDATA[
+    Enable color management on OS X using ColorSync, which is not working with bundled Java correctly.
+  ]]></description>
+
+  <change-notes><![CDATA[
+    <p>0.1.0</p>
+    <ul>
+      <li>Initial release.</li>
+    </ul>
+  ]]></change-notes>
+
+  <idea-version since-build="141.0"/>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <ApplicationLoadListener implementation="at.niw.EnableColorManagement.ApplicationLoadListener"/>
+  </extensions>
+</idea-plugin>

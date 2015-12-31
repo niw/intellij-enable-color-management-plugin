@@ -1,0 +1,64 @@
+import org.gradle.internal.jvm.Jvm
+
+plugins {
+  id "org.jetbrains.intellij" version "0.0.35"
+  id "objective-c"
+}
+
+intellij {
+  version "15.0.2"
+}
+
+org.gradle.api.plugins.JavaPlugin
+
+model {
+  components {
+    main(NativeLibrarySpec) {
+      // This name is used for the outputFile, like libEnableColorManagement.dylib
+      // Must be same as the one in application loader listener.
+      baseName = "EnableColorManagement"
+
+      binaries {
+        all {
+          tasks {
+            String javaHome = Jvm.current().getJavaHome()
+
+            // Add JNI headers to include paths.
+            withType(AbstractNativeCompileTask) {
+              // TODO: Better way to get include paths.
+              includes new File(javaHome, "include")
+              includes new File(javaHome, "include/darwin")
+            }
+
+            withType(AbstractLinkTask) {
+              // TODO: Better way to get and give library path.
+              linkerArgs = [
+                "-L" + new File(javaHome, "jre/lib"),
+                "-lawt_lwawt",
+              ]
+
+              // Add dependency to the JavaPlugin process resources task,
+              // then add output file to the resources.
+              // TODO: Better way to have a dependency.
+              processResources.dependsOn(it)
+              processResources.from(outputFile)
+            }
+
+            // Enable Objective-C ARC and modules.
+            withType(ObjectiveCCompile) {
+              compilerArgs = [
+                "-fobjc-arc",
+                "-fmodules"
+              ]
+            }
+          }
+        }
+
+        // Disable static library.
+        withType(StaticLibraryBinarySpec) {
+          buildable = false
+        }
+      }
+    }
+  }
+}

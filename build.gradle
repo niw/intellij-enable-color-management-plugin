@@ -9,8 +9,6 @@ intellij {
   version "15.0.2"
 }
 
-org.gradle.api.plugins.JavaPlugin
-
 model {
   components {
     main(NativeLibrarySpec) {

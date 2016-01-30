@@ -16,6 +16,7 @@
   ]]></change-notes>
 
   <idea-version since-build="141.0"/>
+  <depends>com.intellij.modules.platform</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <ApplicationLoadListener implementation="at.niw.EnableColorManagement.ApplicationLoadListener"/>
